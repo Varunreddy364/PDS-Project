@@ -1,0 +1,24 @@
+> # SQL query 3: Average automation risk by industry
+> industry_result <- DBI::dbGetQuery(
++   con,
++   "SELECT industry,
++           COUNT(*) AS job_postings,
++           ROUND(AVG(automation_risk_score), 3)
++           AS mean_automation_risk
++    FROM job_postings
++    GROUP BY industry
++    ORDER BY mean_automation_risk DESC"
++ )
+> cat("\nINDUSTRY ANALYSIS\n")
+INDUSTRY ANALYSIS
+> print(industry_result)
+       industry job_postings mean_automation_risk
+1   Agriculture          569                0.618
+2    Government          546                0.612
+3    Healthcare          560                0.610
+4 Manufacturing          573                0.605
+5        Energy          522                0.604
+6        Retail          567                0.598
+7     Education          535                0.595
+8          Tech          579                0.522
+9       Finance          549                0.513

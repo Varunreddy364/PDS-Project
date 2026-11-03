@@ -1,0 +1,107 @@
+> # ========================================================
+> # Model 8: Gradient Boosting Machine (gbm)
+> # ========================================================
+> fit <- readRDS('results/models/tuned_gradient_boosting.rds')
+> print(fit)
+Stochastic Gradient Boosting 
+
+4002 samples
+  54 predictor
+   3 classes: 'Low', 'Medium', 'High' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold) 
+Summary of sample sizes: 3201, 3202, 3202, 3202, 3201 
+Resampling results across tuning parameters:
+
+  shrinkage  interaction.depth  n.trees  logLoss    AUC        prAUC      Accuracy 
+  0.05       2                   50      0.4608514  0.8340100  0.6689159  0.7578702
+  0.05       2                  100      0.4480675  0.8357003  0.6674974  0.7516230
+  0.05       2                  150      0.4513896  0.8347866  0.6655571  0.7436270
+  0.05       4                   50      0.4647009  0.8313131  0.6612836  0.7546214
+  0.05       4                  100      0.4559190  0.8320131  0.6627941  0.7368823
+  0.05       4                  150      0.4592328  0.8339216  0.6655836  0.7331326
+  0.10       2                   50      0.4495564  0.8355446  0.6680261  0.7496236
+  0.10       2                  100      0.4568474  0.8352414  0.6691022  0.7341292
+  0.10       2                  150      0.4670774  0.8327730  0.6647643  0.7296314
+  0.10       4                   50      0.4601445  0.8316592  0.6617936  0.7383842
+  0.10       4                  100      0.4772485  0.8306145  0.6605865  0.7271376
+  0.10       4                  150      0.4906940  0.8299122  0.6592666  0.7151439
+  Kappa      Mean_F1    Mean_Sensitivity  Mean_Specificity  Mean_Pos_Pred_Value
+  0.5973403  0.5975616  0.6655668         0.8575094         0.7052705          
+  0.5887935  0.6031097  0.6631238         0.8553390         0.6384962          
+  0.5780409  0.6104392  0.6601241         0.8525927         0.6415355          
+  0.5929661  0.6028075  0.6644838         0.8564266         0.6378686          
+  0.5693019  0.6172285  0.6580812         0.8503954         0.6444809          
+  0.5660283  0.6302763  0.6605124         0.8500417         0.6545880          
+  0.5871063  0.6134016  0.6647125         0.8552229         0.6645083          
+  0.5676181  0.6317890  0.6615889         0.8505547         0.6561495          
+  0.5632836  0.6421520  0.6634525         0.8498735         0.6613236          
+  0.5736198  0.6320686  0.6640712         0.8522300         0.6615461          
+  0.5606000  0.6453607  0.6638787         0.8493492         0.6606978          
+  0.5448184  0.6459863  0.6586037         0.8450401         0.6545949          
+  Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall  Mean_Detection_Rate
+  0.9168237            0.7052705       0.6655668    0.2526234          
+  0.9074103            0.6384962       0.6631238    0.2505410          
+  0.8964604            0.6415355       0.6601241    0.2478757          
+  0.9116210            0.6378686       0.6644838    0.2515405          
+  0.8876148            0.6444809       0.6580812    0.2456274          
+  0.8802773            0.6545880       0.6605124    0.2443775          
+  0.9020939            0.6645083       0.6647125    0.2498745          
+  0.8807023            0.6561495       0.6615889    0.2447097          
+  0.8737741            0.6613236       0.6634525    0.2432105          
+  0.8848024            0.6615461       0.6640712    0.2461281          
+  0.8706672            0.6606978       0.6638787    0.2423792          
+  0.8603703            0.6545949       0.6586037    0.2383813          
+  Mean_Balanced_Accuracy
+  0.7615381             
+  0.7592314             
+  0.7563584             
+  0.7604552             
+  0.7542383             
+  0.7552771             
+  0.7599677             
+  0.7560718             
+  0.7566630             
+  0.7581506             
+  0.7566140             
+  0.7518219             
+
+Tuning parameter 'n.minobsinnode' was held constant at a value of 10
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were n.trees = 50, interaction.depth = 2, shrinkage
+ = 0.05 and n.minobsinnode = 10.
+
+> # Held-Out Test Set Evaluation (998 instances)
+> test_preds <- predict(fit, newdata = test_clean)
+> confusionMatrix(test_preds, test_clean$risk_category)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction Low Medium High
+    Low    324      0    0
+    Medium   0      1    2
+    High     0    238  433
+
+Overall Statistics
+                                          
+               Accuracy : 0.7595          
+                 95% CI : (0.7318, 0.7857)
+    No Information Rate : 0.4359          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5998          
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: Low Class: Medium Class: High
+Sensitivity              1.0000      0.004184      0.9954
+Specificity              1.0000      0.997365      0.5773
+Pos Pred Value           1.0000      0.333333      0.6453
+Neg Pred Value           1.0000      0.760804      0.9939
+Prevalence               0.3246      0.239479      0.4359
+Detection Rate           0.3246      0.001002      0.4339
+Detection Prevalence     0.3246      0.003006      0.6723
+Balanced Accuracy        1.0000      0.500775      0.7863

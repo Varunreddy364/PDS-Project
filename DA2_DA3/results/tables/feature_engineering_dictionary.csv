@@ -1,0 +1,55 @@
+"Feature_Name","Origin","Data_Type","Unique_Values"
+"posting_year","Raw Numeric","integer",16
+"ai_intensity_score","Raw Numeric","numeric",77
+"salary_usd","Raw Numeric","integer",4883
+"salary_change_vs_prev_year_percent","Raw Numeric","numeric",1815
+"job_description_embedding_cluster","Raw Numeric","integer",20
+"log_salary","Engineered Numeric","numeric",4883
+"salary_rank_industry","Engineered Numeric","numeric",4920
+"years_since_2010","Engineered Numeric","numeric",16
+"salary_increased","Engineered Numeric","integer",2
+"seniority_numeric","Engineered Numeric","numeric",5
+"ai_mentioned_num","Engineered Numeric","integer",2
+"reskilling_num","Engineered Numeric","integer",2
+"ai_keywords_count","Text-Derived Numeric","integer",5
+"ai_keywords_not_specified","Text-Derived Numeric","integer",2
+"kw_nlp","Text-Derived Numeric","integer",2
+"kw_reinforcement_learning","Text-Derived Numeric","integer",2
+"kw_deep_learning","Text-Derived Numeric","integer",2
+"kw_mlops","Text-Derived Numeric","integer",2
+"kw_computer_vision","Text-Derived Numeric","integer",2
+"kw_machine_learning","Text-Derived Numeric","integer",2
+"kw_generative_ai","Text-Derived Numeric","integer",2
+"kw_llms","Text-Derived Numeric","integer",2
+"core_skills_count","Text-Derived Numeric","integer",4
+"core_skills_not_specified","Text-Derived Numeric","integer",1
+"skill_business_analysis","Text-Derived Numeric","integer",2
+"skill_sql","Text-Derived Numeric","integer",2
+"skill_python","Text-Derived Numeric","integer",2
+"skill_software_eng","Text-Derived Numeric","integer",2
+"skill_cloud_computing","Text-Derived Numeric","integer",2
+"skill_research","Text-Derived Numeric","integer",2
+"skill_data_analysis","Text-Derived Numeric","integer",2
+"skill_project_management","Text-Derived Numeric","integer",2
+"skill_communication","Text-Derived Numeric","integer",2
+"skill_statistics","Text-Derived Numeric","integer",2
+"ai_skills_count","Text-Derived Numeric","integer",5
+"ai_skills_not_specified","Text-Derived Numeric","integer",2
+"aiskill_nlp","Text-Derived Numeric","integer",2
+"aiskill_reinforcement_learning","Text-Derived Numeric","integer",2
+"aiskill_deep_learning","Text-Derived Numeric","integer",2
+"aiskill_mlops","Text-Derived Numeric","integer",2
+"aiskill_computer_vision","Text-Derived Numeric","integer",2
+"aiskill_machine_learning","Text-Derived Numeric","integer",2
+"aiskill_generative_ai","Text-Derived Numeric","integer",2
+"aiskill_llms","Text-Derived Numeric","integer",2
+"company_size","Categorical","factor",5
+"industry","Categorical","factor",9
+"job_title","Categorical","factor",10
+"seniority_level","Categorical","factor",6
+"ai_job_displacement_risk","Categorical","factor",3
+"industry_ai_adoption_stage","Categorical","factor",3
+"country","Categorical","factor",44
+"region","Categorical","factor",9
+"city","Categorical","factor",14
+"company_name","Categorical","factor",16

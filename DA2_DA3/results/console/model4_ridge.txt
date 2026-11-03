@@ -1,0 +1,11 @@
+> # ==========================================================================
+> # Model 4 — Ridge Regression (L2 Regularization on ALL Input Variables)
+> # ==========================================================================
+> cv_ridge <- cv.glmnet(x_train, y_train, alpha = 0, nfolds = 5)
+Optimal lambda chosen by 5-fold CV: 0.023497
+> p_ridge <- as.vector(predict(m_ridge, newx = x_test))
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.0768
+  Root Mean Squared Error   : 0.0890
+  R-squared (R2)            : 87.19%

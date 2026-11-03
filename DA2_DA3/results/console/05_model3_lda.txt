@@ -1,0 +1,57 @@
+> # ========================================================
+> # Model 3: Linear Discriminant Analysis (LDA)
+> # ========================================================
+> fit <- readRDS('results/models/baseline_linear_discriminant_analysis.rds')
+> print(fit)
+Linear Discriminant Analysis 
+
+4002 samples
+  54 predictor
+   3 classes: 'Low', 'Medium', 'High' 
+
+Pre-processing: centered (136), scaled (136), remove (17) 
+Resampling: Cross-Validated (5 fold, repeated 3 times) 
+Summary of sample sizes: 3202, 3202, 3201, 3202, 3201, 3203, ... 
+Resampling results:
+
+  logLoss    AUC        prAUC      Accuracy   Kappa      Mean_F1    Mean_Sensitivity
+  0.4610442  0.8356476  0.5478518  0.7335485  0.5671188  0.6337749  0.6619499       
+  Mean_Specificity  Mean_Pos_Pred_Value  Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall
+  0.8505156         0.6578973            0.8798601            0.6578973       0.6619499  
+  Mean_Detection_Rate  Mean_Balanced_Accuracy
+  0.2445162            0.7562328             
+
+
+> # Held-Out Test Set Evaluation (998 instances)
+> test_preds <- predict(fit, newdata = test_clean)
+> confusionMatrix(test_preds, test_clean$risk_category)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction Low Medium High
+    Low    322      0    0
+    Medium   0     23   33
+    High     2    216  402
+
+Overall Statistics
+                                          
+               Accuracy : 0.7485          
+                 95% CI : (0.7204, 0.7752)
+    No Information Rate : 0.4359          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5884          
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: Low Class: Medium Class: High
+Sensitivity              0.9938       0.09623      0.9241
+Specificity              1.0000       0.95652      0.6128
+Pos Pred Value           1.0000       0.41071      0.6484
+Neg Pred Value           0.9970       0.77070      0.9127
+Prevalence               0.3246       0.23948      0.4359
+Detection Rate           0.3226       0.02305      0.4028
+Detection Prevalence     0.3226       0.05611      0.6212
+Balanced Accuracy        0.9969       0.52638      0.7685

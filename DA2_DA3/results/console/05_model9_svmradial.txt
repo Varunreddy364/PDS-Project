@@ -1,0 +1,66 @@
+> # ========================================================
+> # Model 9: Support Vector Machine (Radial Basis)
+> # ========================================================
+> fit <- readRDS('results/models/baseline_support_vector_machine__radial_.rds')
+> print(fit)
+Support Vector Machines with Radial Basis Function Kernel 
+
+4002 samples
+  54 predictor
+   3 classes: 'Low', 'Medium', 'High' 
+
+Pre-processing: centered (152), scaled (152), remove (1) 
+Resampling: Cross-Validated (5 fold, repeated 3 times) 
+Summary of sample sizes: 3202, 3202, 3201, 3202, 3201, 3203, ... 
+Resampling results across tuning parameters:
+
+  C     logLoss    AUC        prAUC      Accuracy   Kappa      Mean_F1  Mean_Sensitivity
+  0.25  0.4404015  0.8327696  0.6640225  0.7601198  0.6005184  NaN      0.6666667       
+  0.50  0.4403650  0.8328101  0.6644350  0.7601198  0.6005184  NaN      0.6666667       
+  1.00  0.4404381  0.8355000  0.6681136  0.7601198  0.6005184  NaN      0.6666667       
+  Mean_Specificity  Mean_Pos_Pred_Value  Mean_Neg_Pred_Value  Mean_Precision  Mean_Recall
+  0.8583443         NaN                  0.9200399            NaN             0.6666667  
+  0.8583443         NaN                  0.9200399            NaN             0.6666667  
+  0.8583443         NaN                  0.9200399            NaN             0.6666667  
+  Mean_Detection_Rate  Mean_Balanced_Accuracy
+  0.2533733            0.7625055             
+  0.2533733            0.7625055             
+  0.2533733            0.7625055             
+
+Tuning parameter 'sigma' was held constant at a value of 0.003482293
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were sigma = 0.003482293 and C = 0.25.
+
+> # Held-Out Test Set Evaluation (998 instances)
+> test_preds <- predict(fit, newdata = test_clean)
+> confusionMatrix(test_preds, test_clean$risk_category)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction Low Medium High
+    Low    324      0    0
+    Medium   0      0    0
+    High     0    239  435
+
+Overall Statistics
+                                          
+               Accuracy : 0.7605          
+                 95% CI : (0.7328, 0.7867)
+    No Information Rate : 0.4359          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.601           
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: Low Class: Medium Class: High
+Sensitivity              1.0000        0.0000      1.0000
+Specificity              1.0000        1.0000      0.5755
+Pos Pred Value           1.0000           NaN      0.6454
+Neg Pred Value           1.0000        0.7605      1.0000
+Prevalence               0.3246        0.2395      0.4359
+Detection Rate           0.3246        0.0000      0.4359
+Detection Prevalence     0.3246        0.0000      0.6754
+Balanced Accuracy        1.0000        0.5000      0.7877

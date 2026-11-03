@@ -1,0 +1,12 @@
+> # ==========================================================================
+> # Model 5 — Lasso Regression (L1 Penalty & Sparsity on ALL Input Variables)
+> # ==========================================================================
+> cv_lasso <- cv.glmnet(x_train, y_train, alpha = 1, nfolds = 5)
+Optimal lambda chosen by 5-fold CV: 0.003254
+Non-zero coefficients retained: 8 of 154
+> p_lasso <- as.vector(predict(m_lasso, newx = x_test))
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.0750
+  Root Mean Squared Error   : 0.0867
+  R-squared (R2)            : 87.82%

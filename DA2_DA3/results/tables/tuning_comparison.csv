@@ -1,0 +1,7 @@
+"Model_ID","Baseline_CV_Acc","Baseline_Test_Acc","Baseline_F1","Best_Params","Tuned_CV_Acc","Tuned_Test_Acc","Tuned_F1","Tuning_Time_Sec","CV_Improvement_Pct","Test_Improvement_Pct"
+"Elastic-Net Logistic Regression",0.7601,0.7605,0.5948,"alpha=0.5, lambda=0.05",0.7601,0.7605,0.5948,8.1,"0%","0%"
+"Decision Tree (CART)",0.7569,0.7605,0.5948,"cp=0.02",0.7601,0.7605,0.5948,3.5,"0.42%","0%"
+"Random Forest (ranger)",0.7601,0.7605,0.5948,"mtry=4, splitrule=gini, min.node.size=5",0.7589,0.7605,0.5948,15.2,"-0.16%","0%"
+"Gradient Boosting Machine",0.7587,0.7595,0.5945,"n.trees=50, interaction.depth=2, shrinkage=0.05, n.minobsinnode=10",0.7579,0.7595,0.5971,22.4,"-0.11%","0%"
+"Naive Bayes",0.722,0.7234,0.5662,"laplace=0, usekernel=TRUE, adjust=1",0.7234,0.7234,0.5662,5.2,"0.19%","0%"
+"K-Nearest Neighbors",0.655,0.6743,0.6395,"kmax=21, distance=2, kernel=optimal",0.6592,0.6914,0.624,18.7,"0.64%","2.54%"

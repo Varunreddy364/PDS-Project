@@ -1,0 +1,6 @@
+"Feature","Overall_Correlation","AI_False_Correlation","AI_True_Correlation"
+"salary_usd",-0.4317,0.0092,-0.0299
+"salary_change_vs_prev_year_percent",-0.6761,-0.0136,0.0099
+"posting_year",-0.4224,-0.009,-0.0158
+"job_description_embedding_cluster",-0.017,-0.0128,-0.0026
+"ai_intensity_score",-0.8751,0.029,-0.0122

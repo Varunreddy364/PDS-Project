@@ -1,0 +1,44 @@
+=== CARET RESAMPLES STATISTICAL SIGNIFICANCE SUMMARY ===
+
+
+Call:
+summary.resamples(object = resamps, metric = c("Accuracy", "Kappa"))
+
+Models: Random_Forest, Elastic_Net, Decision_Tree, GBM, Naive_Bayes 
+Number of resamples: 5 
+
+Accuracy 
+                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's
+Random_Forest 0.7565543 0.7575000 0.7575000 0.7588705 0.7612500 0.7615481    0
+Elastic_Net   0.7596996 0.7600000 0.7602996 0.7601197 0.7602996 0.7602996    0
+Decision_Tree 0.7600000 0.7600000 0.7600000 0.7601199 0.7602996 0.7602996    0
+GBM           0.7500000 0.7578027 0.7600000 0.7578702 0.7600000 0.7615481    0
+Naive_Bayes   0.7141074 0.7203496 0.7246558 0.7233906 0.7278402 0.7300000    0
+
+Kappa 
+                   Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's
+Random_Forest 0.5953256 0.5962791 0.5966652 0.5987984 0.6027413 0.6029807    0
+Elastic_Net   0.5998748 0.6004994 0.6007394 0.6005185 0.6007394 0.6007394    0
+Decision_Tree 0.6001146 0.6004994 0.6004994 0.6005184 0.6007394 0.6007394    0
+GBM           0.5858699 0.5972371 0.6001146 0.5973403 0.6004994 0.6029807    0
+Naive_Bayes   0.5196924 0.5307263 0.5385237 0.5361910 0.5439331 0.5480793    0
+
+
+=== PAIRED DIFFERENCES ON ACCURACY (diff.resamples) ===
+
+
+Call:
+summary.diff.resamples(object = diffs)
+
+p-value adjustment: bonferroni 
+Upper diagonal: estimates of the difference
+Lower diagonal: p-value for H0: difference = 0
+
+Accuracy 
+              Random_Forest Elastic_Net Decision_Tree GBM        Naive_Bayes
+Random_Forest               -1.249e-03  -1.249e-03     1.000e-03  3.548e-02 
+Elastic_Net   1.000000                  -1.500e-07     2.250e-03  3.673e-02 
+Decision_Tree 1.000000      1.000000                   2.250e-03  3.673e-02 
+GBM           1.000000      1.000000    1.000000                  3.448e-02 
+Naive_Bayes   0.002927      0.002155    0.002233      0.009301              
+

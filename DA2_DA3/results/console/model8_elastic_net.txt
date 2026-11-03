@@ -1,0 +1,11 @@
+> # ==========================================================================
+> # Model 8 — Elastic-Net Regression (L1/L2 Mixture alpha=0.5, All Variables)
+> # ==========================================================================
+> cv_enet <- cv.glmnet(x_train, y_train, alpha = 0.5, nfolds = 5)
+Optimal lambda chosen by 5-fold CV: 0.005403
+> p_enet <- as.vector(predict(m_enet, newx = x_test))
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.0750
+  Root Mean Squared Error   : 0.0867
+  R-squared (R2)            : 87.82%

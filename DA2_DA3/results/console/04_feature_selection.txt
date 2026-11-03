@@ -1,0 +1,47 @@
+> # Feature Selection: Near-Zero Variance, Collinearity Filter, and Ranking
+> feat_sel <- read.csv('results/tables/feature_selection_ranking.csv')
+> cat('Total Features Evaluated:', nrow(feat_sel), '\n')
+Total Features Evaluated: 54
+
+> head(feat_sel, 15)
+                              Feature RF_Impurity_Imp RF_Rank NZV_Flag High_Cor_Flag
+1                  ai_intensity_score       239.44268       1    FALSE         FALSE
+2                      reskilling_num       184.47146       2    FALSE          TRUE
+3                   ai_keywords_count       176.35915       3    FALSE          TRUE
+4                    ai_mentioned_num       170.93349       4    FALSE          TRUE
+5             ai_skills_not_specified       164.52474       5    FALSE          TRUE
+6           ai_keywords_not_specified       157.44201       6    FALSE          TRUE
+7                     ai_skills_count       142.06940       7    FALSE          TRUE
+8  salary_change_vs_prev_year_percent       134.25885       8    FALSE         FALSE
+9                          salary_usd        96.58470       9    FALSE          TRUE
+10               salary_rank_industry        89.19237      10    FALSE         FALSE
+11                         log_salary        85.74745      11    FALSE          TRUE
+12  job_description_embedding_cluster        64.53837      12    FALSE         FALSE
+13                            country        64.17881      13     TRUE         FALSE
+14                       company_name        60.07938      14    FALSE         FALSE
+15                               city        58.97879      15    FALSE         FALSE
+                 Recommendation
+1      Keep (Primary Predictor)
+2        Drop (Collinear Proxy)
+3      Keep (Primary Predictor)
+4      Keep (Primary Predictor)
+5        Drop (Collinear Proxy)
+6        Drop (Collinear Proxy)
+7      Keep (Primary Predictor)
+8      Keep (Primary Predictor)
+9      Keep (Primary Predictor)
+10     Keep (Primary Predictor)
+11     Keep (Primary Predictor)
+12     Keep (Primary Predictor)
+13 Keep (Secondary Informative)
+14 Keep (Secondary Informative)
+15 Keep (Secondary Informative)
+
+> table(feat_sel$Recommendation)
+
+        Drop (Collinear Proxy) Drop (Low Information Utility) 
+                             3                             31 
+     Drop (Near-Zero Variance)       Keep (Primary Predictor) 
+                             1                              9 
+  Keep (Secondary Informative) 
+                            10 

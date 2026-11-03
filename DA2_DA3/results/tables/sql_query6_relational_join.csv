@@ -1,0 +1,11 @@
+"job_id","job_title","industry","salary_usd","avg_industry_salary","salary_premium","automation_risk_score","avg_industry_risk"
+"001661d0-9f1f-4d6f-9b15-d45cb1d916ac","Research Scientist","Agriculture",100010,61125.02,38884.98,0.87,0.6181
+"0026bb0a-ec7b-48ab-b5c5-f42d56887fea","Systems Engineer","Education",42862,62098.83,-19236.83,0.19,0.5955
+"004408bc-0e8e-4d1d-ad75-21371666a7e5","Research Scientist","Retail",95968,61822.22,34145.78,0.71,0.5975
+"0060eb27-ee58-4762-90f4-c3fd1c26c086","Business Analyst","Energy",154543,62725.85,91817.15,0.1,0.6041
+"00610cc6-f219-4265-877f-ced693a3a917","Operations Manager","Manufacturing",121241,62882.09,58358.91,0.11,0.6053
+"0065fbfd-8eff-4027-993b-1587d03fb3d3","Policy Analyst","Energy",62551,62725.85,-174.85,0.76,0.6041
+"00684b19-0862-4e8c-8c72-9f75a7c90599","ML Engineer","Retail",49502,61822.22,-12320.22,0.67,0.5975
+"00b4a543-232f-4136-b59c-d4c5cd3d4291","Systems Engineer","Tech",80396,66262.01,14133.99,0.15,0.5217
+"00b71b15-dd1e-4e92-bb28-65bd0b86ebfe","Research Scientist","Government",49369,63088.82,-13719.82,0.73,0.6122
+"00e8812e-6d13-47ac-b1f2-c68d87e9ce3f","ML Engineer","Manufacturing",84513,62882.09,21630.91,0.8,0.6053

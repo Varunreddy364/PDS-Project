@@ -1,0 +1,11 @@
+> # ==========================================================================
+> # Model 7 — K-Nearest Neighbors Regression (k=15, Optimal Kernel Weighting)
+> # ==========================================================================
+> m_knn <- kknn(automation_risk_score ~ ., train = train_reg, test = test_reg, k = 15)
+> summary(m_knn)
+Weighted K-Nearest Neighbors Regression Object (k = 15, distance = 2)
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.0772
+  Root Mean Squared Error   : 0.0908
+  R-squared (R2)            : 86.66%

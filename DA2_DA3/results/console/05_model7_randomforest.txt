@@ -1,0 +1,81 @@
+> # ========================================================
+> # Model 7: Random Forest (ranger)
+> # ========================================================
+> fit <- readRDS('results/models/tuned_random_forest.rds')
+> print(fit)
+Random Forest 
+
+4002 samples
+  54 predictor
+   3 classes: 'Low', 'Medium', 'High' 
+
+No pre-processing
+Resampling: Cross-Validated (5 fold) 
+Summary of sample sizes: 3202, 3202, 3201, 3202, 3201 
+Resampling results across tuning parameters:
+
+  mtry  min.node.size  logLoss    AUC        prAUC      Accuracy   Kappa      Mean_F1  
+   4    1              0.4495321  0.8346109  0.5986905  0.7583708  0.5982285  0.5991890
+   4    5              0.4500146  0.8365567  0.6199652  0.7588705  0.5987984  0.5978176
+   8    1              0.4449199  0.8381159  0.4115277  0.7571205  0.5972367  0.6060152
+   8    5              0.4452962  0.8350435  0.4083046  0.7571214  0.5970334  0.6042366
+  14    1              0.4467633  0.8343759  0.3422532  0.7551220  0.5952362  0.6143902
+  14    5              0.4444916  0.8383357  0.3480998  0.7568727  0.5971750  0.6088324
+  20    1              0.4460966  0.8361677  0.3393789  0.7558720  0.5972284  0.6216332
+  20    5              0.4471657  0.8346853  0.3351096  0.7541239  0.5936512  0.6133971
+  Mean_Sensitivity  Mean_Specificity  Mean_Pos_Pred_Value  Mean_Neg_Pred_Value
+  0.6662634         0.8578052         0.6881860            0.9168815          
+  0.6661791         0.8579103         0.6948334            0.9180438          
+  0.6674924         0.8577891         0.6921054            0.9128442          
+  0.6670232         0.8576756         0.6652810            0.9133646          
+  0.6684585         0.8575187         0.6866506            0.9078856          
+  0.6680807         0.8578697         0.6725488            0.9116118          
+  0.6710561         0.8583420         0.6988129            0.9064685          
+  0.6675382         0.8570439         0.6765042            0.9070463          
+  Mean_Precision  Mean_Recall  Mean_Detection_Rate  Mean_Balanced_Accuracy
+  0.6881860       0.6662634    0.2527903            0.7620343             
+  0.6948334       0.6661791    0.2529568            0.7620447             
+  0.6921054       0.6674924    0.2523735            0.7626408             
+  0.6652810       0.6670232    0.2523738            0.7623494             
+  0.6866506       0.6684585    0.2517073            0.7629886             
+  0.6725488       0.6680807    0.2522909            0.7629752             
+  0.6988129       0.6710561    0.2519573            0.7646990             
+  0.6765042       0.6675382    0.2513746            0.7622910             
+
+Tuning parameter 'splitrule' was held constant at a value of gini
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were mtry = 4, splitrule = gini and min.node.size = 5.
+
+> # Held-Out Test Set Evaluation (998 instances)
+> test_preds <- predict(fit, newdata = test_clean)
+> confusionMatrix(test_preds, test_clean$risk_category)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction Low Medium High
+    Low    324      0    0
+    Medium   0      0    0
+    High     0    239  435
+
+Overall Statistics
+                                          
+               Accuracy : 0.7605          
+                 95% CI : (0.7328, 0.7867)
+    No Information Rate : 0.4359          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.601           
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: Low Class: Medium Class: High
+Sensitivity              1.0000        0.0000      1.0000
+Specificity              1.0000        1.0000      0.5755
+Pos Pred Value           1.0000           NaN      0.6454
+Neg Pred Value           1.0000        0.7605      1.0000
+Prevalence               0.3246        0.2395      0.4359
+Detection Rate           0.3246        0.0000      0.4359
+Detection Prevalence     0.3246        0.0000      0.6754
+Balanced Accuracy        1.0000        0.5000      0.7877

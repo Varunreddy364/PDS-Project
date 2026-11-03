@@ -1,0 +1,71 @@
+> # ========================================================
+> # Model 5: K-Nearest Neighbors (kknn)
+> # ========================================================
+> fit <- readRDS('results/models/tuned_k_nearest_neighbors.rds')
+> print(fit)
+k-Nearest Neighbors 
+
+4002 samples
+  54 predictor
+   3 classes: 'Low', 'Medium', 'High' 
+
+Pre-processing: centered (152), scaled (152), remove (1) 
+Resampling: Cross-Validated (5 fold) 
+Summary of sample sizes: 3202, 3202, 3201, 3201, 3202 
+Resampling results across tuning parameters:
+
+  kmax  logLoss     AUC        prAUC      Accuracy   Kappa      Mean_F1  
+   5    12.8505592  0.7060846  0.1602769  0.6279382  0.4245399  0.6165902
+   9     0.9142186  0.7920761  0.5472219  0.6471763  0.4424949  0.6138374
+  15     0.6675838  0.7992528  0.5876265  0.6531689  0.4452637  0.6043544
+  21     0.6544221  0.8025184  0.6119047  0.6591701  0.4503434  0.5981186
+  Mean_Sensitivity  Mean_Specificity  Mean_Pos_Pred_Value  Mean_Neg_Pred_Value
+  0.6043712         0.8077981         0.6346931            0.8037830          
+  0.6046354         0.8120704         0.6346115            0.8153808          
+  0.5999218         0.8119756         0.6302492            0.8214448          
+  0.5987541         0.8129363         0.6286491            0.8282771          
+  Mean_Precision  Mean_Recall  Mean_Detection_Rate  Mean_Balanced_Accuracy
+  0.6346931       0.6043712    0.2093127            0.7060846             
+  0.6346115       0.6046354    0.2157254            0.7083529             
+  0.6302492       0.5999218    0.2177230            0.7059487             
+  0.6286491       0.5987541    0.2197234            0.7058452             
+
+Tuning parameter 'distance' was held constant at a value of 2
+Tuning parameter
+ 'kernel' was held constant at a value of optimal
+Accuracy was used to select the optimal model using the largest value.
+The final values used for the model were kmax = 21, distance = 2 and kernel = optimal.
+
+> # Held-Out Test Set Evaluation (998 instances)
+> test_preds <- predict(fit, newdata = test_clean)
+> confusionMatrix(test_preds, test_clean$risk_category)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction Low Medium High
+    Low    271      0    0
+    Medium   9     43   59
+    High    44    196  376
+
+Overall Statistics
+                                          
+               Accuracy : 0.6914          
+                 95% CI : (0.6617, 0.7199)
+    No Information Rate : 0.4359          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.4991          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+
+Statistics by Class:
+
+                     Class: Low Class: Medium Class: High
+Sensitivity              0.8364       0.17992      0.8644
+Specificity              1.0000       0.91041      0.5737
+Pos Pred Value           1.0000       0.38739      0.6104
+Neg Pred Value           0.9271       0.77903      0.8455
+Prevalence               0.3246       0.23948      0.4359
+Detection Rate           0.2715       0.04309      0.3768
+Detection Prevalence     0.2715       0.11122      0.6172
+Balanced Accuracy        0.9182       0.54516      0.7190

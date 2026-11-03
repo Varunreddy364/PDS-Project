@@ -1,0 +1,22 @@
+> # ==========================================================================
+> # Model 9 — Gradient Boosting Regression (gbm: 150 Trees, All 20 Variables)
+> # ==========================================================================
+> m_gbm <- gbm(automation_risk_score ~ ., data = train_reg, distribution = 'gaussian', n.trees = 150)
+CV: 1 
+CV: 2 
+CV: 3 
+> print(m_gbm)
+gbm(formula = automation_risk_score ~ ., distribution = "gaussian", 
+    data = train_reg, n.trees = 150, interaction.depth = 3, shrinkage = 0.05, 
+    cv.folds = 3, n.cores = 1)
+A gradient boosted model with gaussian loss function.
+150 iterations were performed.
+The best cross-validation iteration was 70.
+There were 54 predictors of which 9 had non-zero influence.
+
+> p_gbm <- predict(m_gbm, newdata = test_reg, n.trees = 150)
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.0755
+  Root Mean Squared Error   : 0.0872
+  R-squared (R2)            : 87.69%

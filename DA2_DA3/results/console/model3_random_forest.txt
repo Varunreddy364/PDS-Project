@@ -1,0 +1,28 @@
+> # ==========================================================================
+> # Model 3 — Random Forest Regression (ranger: 300 Trees, All 20 Variables)
+> # ==========================================================================
+> m_rf <- ranger(automation_risk_score ~ ., data = train_reg, num.trees = 300, mtry = 14)
+> print(m_rf)
+Ranger result
+
+Call:
+ ranger(automation_risk_score ~ ., data = train_reg, num.trees = 300,      mtry = 14, seed = 123) 
+
+Type:                             Regression 
+Number of trees:                  300 
+Sample size:                      4002 
+Number of independent variables:  54 
+Mtry:                             14 
+Target node size:                 5 
+Variable importance mode:         none 
+Splitrule:                        variance 
+OOB prediction error (MSE):       0.00761776 
+R squared (OOB):                  0.8784852 
+
+> # Predict on held-out test data (998 records)
+> p_rf <- predict(m_rf, data = test_reg)$predictions
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.0752
+  Root Mean Squared Error   : 0.0874
+  R-squared (R2)            : 87.62%

@@ -1,0 +1,3 @@
+"Model_Configuration","Accuracy","Balanced_Accuracy","Macro_F1","Macro_AUC","Accuracy_Drop_Pct"
+"Full Model (with AI Mention & Intensity)",0.7605,0.7626,0.5948,0.8309,"0.0%"
+"Ablated Model (without AI Mention & Proxies)",0.7535,0.7591,0.5973,0.8285,"-0.92%"

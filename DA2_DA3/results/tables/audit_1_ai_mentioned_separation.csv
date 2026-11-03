@@ -1,0 +1,3 @@
+"ai_mentioned","Posting_Count","Min_Risk","Q25_Risk","Median_Risk","Mean_Risk","Q75_Risk","Max_Risk","SD_Risk"
+FALSE,3377,0.6,0.67,0.75,0.748782943440924,0.82,0.9,0.0865459119477309
+TRUE,1623,0.1,0.17,0.25,0.247837338262477,0.32,0.4,0.0863205573988928

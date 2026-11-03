@@ -1,0 +1,3 @@
+"Experiment","Features_Used","Accuracy","Macro_F1","Macro_AUC","Observation"
+"Main Experiment (All 54 Features)",54,0.7605,0.5948,0.8322,"Complete context design as specified in prompt"
+"Supplementary (i) (Selected 19 Features)",19,0.7585,0.6138,0.8425,"Virtually identical accuracy (0.7605); proves parsimony"

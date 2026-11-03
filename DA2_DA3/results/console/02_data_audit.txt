@@ -1,0 +1,46 @@
+> # Data Audit Test 1: Target Separation by ai_mentioned
+> audit1 <- read.csv('results/tables/audit_1_ai_mentioned_separation.csv')
+> print(audit1)
+  ai_mentioned Posting_Count Min_Risk Q25_Risk Median_Risk Mean_Risk Q75_Risk Max_Risk
+1        FALSE          3377      0.6     0.67        0.75 0.7487829     0.82      0.9
+2         TRUE          1623      0.1     0.17        0.25 0.2478373     0.32      0.4
+     SD_Risk
+1 0.08654591
+2 0.08632056
+
+> # Data Audit Test 2 & 3: Redundancy and Conditional Values
+> # reskilling_required == ai_mentioned: 100.0% identical duplicate across all 5,000 records.
+> # ai_keywords and ai_skills are 'Not Specified' when ai_mentioned == FALSE: 100.0% verified.
+
+> # Data Audit Test 6: Pearson Correlations with automation_risk_score
+> audit6 <- read.csv('results/tables/audit_6_numeric_correlations.csv')
+> print(audit6)
+                             Feature Overall_Correlation AI_False_Correlation
+1                         salary_usd             -0.4317               0.0092
+2 salary_change_vs_prev_year_percent             -0.6761              -0.0136
+3                       posting_year             -0.4224              -0.0090
+4  job_description_embedding_cluster             -0.0170              -0.0128
+5                 ai_intensity_score             -0.8751               0.0290
+  AI_True_Correlation
+1             -0.0299
+2              0.0099
+3             -0.0158
+4             -0.0026
+5             -0.0122
+
+> # Data Audit Test 7: Categorical Predictor Power (ANOVA Eta-Squared)
+> audit7 <- read.csv('results/tables/audit_7_eta_squared.csv')
+> print(audit7)
+         Categorical_Variable Distinct_Levels Eta_Squared Variance_Explained_Pct
+1                ai_mentioned               2    0.880389                 88.04%
+2         reskilling_required               2    0.880389                 88.04%
+3  industry_ai_adoption_stage               3    0.158643                 15.86%
+4                    industry               9    0.022896                  2.29%
+5                company_size               5    0.009761                  0.98%
+6                     country              44    0.008279                  0.83%
+7                company_name              16    0.003763                  0.38%
+8                        city              14    0.002013                   0.2%
+9             seniority_level               6    0.001480                  0.15%
+10                     region               9    0.001086                  0.11%
+11                  job_title              10    0.000458                  0.05%
+12   ai_job_displacement_risk               3    0.000273                  0.03%

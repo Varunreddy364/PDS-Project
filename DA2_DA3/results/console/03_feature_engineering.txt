@@ -1,0 +1,23 @@
+> # Feature Engineering & Target Multi-Class Distribution
+> target_dist <- read.csv('results/tables/target_class_distribution.csv')
+> print(target_dist)
+   Class        Threshold Postings Proportion
+1    Low          <= 0.40     1623     32.46%
+2 Medium > 0.40 & <= 0.70     1199     23.98%
+3   High           > 0.70     2178     43.56%
+
+> # 80/20 Stratified Train/Test Partition (set.seed(123))
+> train_df <- readRDS('results/tables/train_data.rds')
+> test_df  <- readRDS('results/tables/test_data.rds')
+> dim(train_df)
+[1] 4002   56
+> dim(test_df)
+[1]  998   56
+
+> table(train_df$risk_category)
+   Low Medium   High 
+  1299    959   1744 
+
+> table(test_df$risk_category)
+   Low Medium   High 
+   324    240    434 

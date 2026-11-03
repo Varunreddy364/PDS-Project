@@ -1,0 +1,16 @@
+> # Final Multi-Class Prediction Demo on Held-Out Test Records
+> fit_rf <- readRDS('results/models/tuned_random_forest.rds')
+> sample_indices <- c(1, 2, 5)
+> sample_records <- test_clean[sample_indices, ]
+> actual_labels  <- test_clean$risk_category[sample_indices]
+> pred_labels    <- predict(fit_rf, newdata = sample_records)
+> pred_probs     <- predict(fit_rf, newdata = sample_records, type = 'prob')
+> demo_output    <- data.frame(Record_ID = rownames(sample_records), Actual = actual_labels, Predicted = pred_labels, round(pred_probs, 4))
+> print(demo_output)
+  Record_ID Actual Predicted    Low Medium   High
+1         9    Low       Low 0.9733 0.0067 0.0200
+2        14   High      High 0.0014 0.2997 0.6989
+3        39 Medium      High 0.0048 0.3489 0.6463
+
+> # Caveat: Individual record predictions demonstrate functional execution;
+> # they do not substitute for rigorous statistical evaluation across all test records.

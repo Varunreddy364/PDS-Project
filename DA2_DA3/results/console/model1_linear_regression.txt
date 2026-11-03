@@ -1,0 +1,17 @@
+> # ==========================================================================
+> # Model 1 — Multiple Linear Regression (Trained on ALL 20 Input Variables)
+> # Predictors: 54 features (salary, seniority, industry, location, text counts)
+> # ==========================================================================
+> m_lm <- lm(automation_risk_score ~ ., data = train_reg)
+> # Model summary (coefficients across all input predictors):
+Residual standard error: 0.0865 on 3873 degrees of freedom
+Multiple R-squared: 0.8845, Adjusted R-squared: 0.8807
+F-statistic: 231.7 on 128 and 3873 DF, p-value: < 2.2e-16
+
+> # Predict on held-out test data (998 records)
+> p_lm <- predict(m_lm, newdata = test_reg)
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.0761
+  Root Mean Squared Error   : 0.0881
+  R-squared (R2)            : 87.44%

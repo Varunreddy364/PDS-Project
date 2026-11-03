@@ -1,0 +1,9 @@
+"Week","Milestone","Deliverable_Focus","Status","Percent_Complete","Cumulative_Weight"
+"Week 1","1. Problem Definition & Scope","Project Formulation & Hypothesis Framing","Completed",100,10
+"Week 2","2. Dataset Identification & Literature Review","Literature Gap & Research Objectives","Completed",100,10
+"Week 3","3. Data Cleaning & Exploratory Analysis (DA1)","Cleaned CSV (5,000 rows), Univariate & Bivariate EDA","Completed",100,15
+"Week 4","4. Statistical Inference & Feature Engineering (DA2)","Data Audit, ANOVA Eta-sq, 54 Engineered Predictors","Completed",100,10
+"Week 5","5. Database Architecture & SQL Retrieval (DA2)","SQLite DB (ai_jobs.db), 6 SQL Queries, CTE, Views","Completed",100,10
+"Week 6","6. Baseline ML Implementation (12 Algorithms, DA2)","12 Classifiers, Repeated 5-Fold CV, Benchmark Comparison","Completed",100,15
+"Week 7","7. Hyperparameter Tuning & Comparative Analysis (DA3)","Grid Tuning, ROC/PR Curves, Ablation & Dominance","Completed",100,15
+"Week 8","8. Final System Deployment & Documentation (Final Demo)","Packaging, Word Reports, Presentation Deck, Submission ZIP","In Progress",30,15

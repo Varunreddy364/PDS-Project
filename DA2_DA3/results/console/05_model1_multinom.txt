@@ -1,0 +1,65 @@
+> # ========================================================
+> # Model 1: Multinomial Logistic Regression
+> # ========================================================
+> fit <- readRDS('results/models/baseline_multinomial_logistic_regression.rds')
+> print(fit)
+Penalized Multinomial Regression 
+
+4002 samples
+  54 predictor
+   3 classes: 'Low', 'Medium', 'High' 
+
+Pre-processing: centered (152), scaled (152), remove (1) 
+Resampling: Cross-Validated (5 fold, repeated 3 times) 
+Summary of sample sizes: 3202, 3202, 3201, 3202, 3201, 3203, ... 
+Resampling results across tuning parameters:
+
+  decay  logLoss    AUC        prAUC      Accuracy   Kappa      Mean_F1  
+  0e+00  0.4646981  0.8378599  0.6722226  0.7297168  0.5621972  0.6355276
+  1e-04  0.4646887  0.8378678  0.6722172  0.7297167  0.5621755  0.6354018
+  1e-01  0.4652311  0.8374907  0.6718326  0.7293838  0.5618747  0.6362239
+  Mean_Sensitivity  Mean_Specificity  Mean_Pos_Pred_Value  Mean_Neg_Pred_Value
+  0.6607644         0.8492406         0.6551273            0.8755643          
+  0.6607123         0.8492279         0.6550597            0.8756013          
+  0.6608718         0.8491827         0.6558911            0.8751134          
+  Mean_Precision  Mean_Recall  Mean_Detection_Rate  Mean_Balanced_Accuracy
+  0.6551273       0.6607644    0.2432389            0.7550025             
+  0.6550597       0.6607123    0.2432389            0.7549701             
+  0.6558911       0.6608718    0.2431279            0.7550272             
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was decay = 0.
+
+> # Held-Out Test Set Evaluation (998 instances)
+> test_preds <- predict(fit, newdata = test_clean)
+> confusionMatrix(test_preds, test_clean$risk_category)
+Confusion Matrix and Statistics
+
+          Reference
+Prediction Low Medium High
+    Low    324      0    0
+    Medium   0     23   48
+    High     0    216  387
+
+Overall Statistics
+                                          
+               Accuracy : 0.7355          
+                 95% CI : (0.7069, 0.7626)
+    No Information Rate : 0.4359          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.5693          
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: Low Class: Medium Class: High
+Sensitivity              1.0000       0.09623      0.8897
+Specificity              1.0000       0.93676      0.6163
+Pos Pred Value           1.0000       0.32394      0.6418
+Neg Pred Value           1.0000       0.76699      0.8785
+Prevalence               0.3246       0.23948      0.4359
+Detection Rate           0.3246       0.02305      0.3878
+Detection Prevalence     0.3246       0.07114      0.6042
+Balanced Accuracy        1.0000       0.51650      0.7530

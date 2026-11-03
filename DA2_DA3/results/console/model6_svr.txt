@@ -1,0 +1,24 @@
+> # ==========================================================================
+> # Model 6 — Support Vector Regression (RBF Kernel on ALL Input Variables)
+> # ==========================================================================
+> m_svr <- ksvm(automation_risk_score ~ ., data = train_reg, kernel = 'rbfdot', C = 1)
+> print(m_svr)
+Support Vector Machine object of class "ksvm" 
+
+SV type: eps-svr  (regression) 
+ parameter : epsilon = 0.1  cost C = 1 
+
+Gaussian Radial Basis kernel function. 
+ Hyperparameter : sigma =  2.16957772050565e-08 
+
+Number of Support Vectors : 2022 
+
+Objective Function Value : -318.102 
+Training error : 0.04658 
+
+> p_svr <- as.vector(predict(m_svr, newdata = test_reg))
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.1537
+  Root Mean Squared Error   : 0.2156
+  R-squared (R2)            : 24.75%

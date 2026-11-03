@@ -1,0 +1,21 @@
+> # ==========================================================================
+> # Model 2 — Decision Tree Regression (CART rpart on ALL Input Variables)
+> # ==========================================================================
+> m_tree <- rpart(automation_risk_score ~ ., data = train_reg, cp = 0.01)
+> print(m_tree)
+n= 4002 
+
+node), split, n, deviance, yval
+      * denotes terminal node
+
+1) root 4002 250.822500 0.5856547  
+  2) ai_keywords_not_specified< 0.5 1299   9.575898 0.2467052 *
+  3) ai_keywords_not_specified>=0.5 2703  20.288390 0.7485461 *
+
+> # Predict on held-out test data (998 records)
+> p_tree <- predict(m_tree, newdata = test_reg)
+
+Held-out Test Set Performance (998 instances):
+  Mean Absolute Error (MAE) : 0.0750
+  Root Mean Squared Error   : 0.0868
+  R-squared (R2)            : 87.81%

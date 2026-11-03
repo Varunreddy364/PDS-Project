@@ -1,0 +1,38 @@
+> library(DBI)
+> library(RSQLite)
+> con <- dbConnect(RSQLite::SQLite(), 'results/database/ai_jobs.db')
+> dbListTables(con)
+[1] "industry_summary"     "job_postings"         "v_high_risk_postings"
+
+> dbGetQuery(con, 'SELECT COUNT(*) AS total_postings FROM job_postings;')
+  total_postings
+1           5000
+
+> # SQL Query 1: Industry Average Risk and Salary (HAVING count > 500)
+> q1 <- 'SELECT industry, COUNT(*) AS postings, ROUND(AVG(automation_risk_score), 4) AS mean_risk, ROUND(AVG(salary_usd), 2) AS mean_salary FROM job_postings GROUP BY industry HAVING COUNT(*) > 500 ORDER BY mean_risk DESC;'
+> dbGetQuery(con, q1)
+       industry postings mean_risk mean_salary
+1   Agriculture      569    0.6181    61125.02
+2    Government      546    0.6122    63088.82
+3    Healthcare      560    0.6104    62502.04
+4 Manufacturing      573    0.6053    62882.09
+5        Energy      522    0.6041    62725.85
+6        Retail      567    0.5975    61822.22
+7     Education      535    0.5955    62098.83
+8          Tech      579    0.5217    66262.01
+9       Finance      549    0.5126    65276.94
+
+> # SQL Query 5: CTE Industry Benchmark vs Overall Average
+> q5 <- 'WITH OverallAvg AS (SELECT AVG(automation_risk_score) AS global_avg FROM job_postings) SELECT j.industry, ROUND(AVG(j.automation_risk_score), 4) AS ind_avg, ROUND(o.global_avg, 4) AS global_avg, ROUND(AVG(j.automation_risk_score) - o.global_avg, 4) AS delta FROM job_postings j, OverallAvg o GROUP BY j.industry ORDER BY delta DESC;'
+> dbGetQuery(con, q5)
+       industry ind_avg global_avg   delta
+1   Agriculture  0.6181     0.5862  0.0320
+2    Government  0.6122     0.5862  0.0260
+3    Healthcare  0.6104     0.5862  0.0242
+4 Manufacturing  0.6053     0.5862  0.0191
+5        Energy  0.6041     0.5862  0.0180
+6        Retail  0.5975     0.5862  0.0113
+7     Education  0.5955     0.5862  0.0093
+8          Tech  0.5217     0.5862 -0.0644
+9       Finance  0.5126     0.5862 -0.0736
+> dbDisconnect(con)

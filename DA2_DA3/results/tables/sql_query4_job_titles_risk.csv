@@ -1,0 +1,11 @@
+"Category","job_title","job_count","avg_risk","avg_salary"
+"Highest Risk","AI Researcher",512,0.5941,61766.09
+"Highest Risk","Research Scientist",520,0.591,60502.44
+"Highest Risk","Data Scientist",486,0.5909,64735.48
+"Highest Risk","Product Manager",440,0.5881,62787.06
+"Highest Risk","Software Engineer",492,0.5877,63890.99
+"Lowest Risk","Operations Manager",525,0.5767,64642.13
+"Lowest Risk","ML Engineer",558,0.5783,64748.41
+"Lowest Risk","Business Analyst",480,0.5837,63349.84
+"Lowest Risk","Policy Analyst",482,0.5857,61935.68
+"Lowest Risk","Systems Engineer",505,0.5868,62466.63
