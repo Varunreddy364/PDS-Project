@@ -19,8 +19,8 @@ Using the Global AI Job Market Dataset (2010–2025), the project analyses 5,000
 
 The primary objective is to understand the factors associated with occupational automation risk and evaluate how effectively machine learning models can estimate risk scores.
 
-## 🎯  Project Objectives
-
+##  🎯  Project Objectives
+ 
 - Analyse the relationship between AI adoption and occupational automation risk.
 - Explore salary, industry, experience, skills, and geographical patterns.
 - Perform statistical analysis to identify significant relationships and group differences.
